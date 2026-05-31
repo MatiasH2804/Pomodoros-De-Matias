@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="https://st5.depositphotos.com/39247644/79616/p/450/depositphotos_796163262-stock-photo-modern-sleek-vibrant-red-wall.png">
+<link rel="apple-touch-icon" href="https://st5.depositphotos.com/39247644/79616/p/450/depositphotos_796163262-stock-photo-modern-sleek-vibrant-red-wall.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Tracker | Grimorio de estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+  <div class="brand-title">
+    <img
+      src="https://st5.depositphotos.com/39247644/79616/p/450/depositphotos_796163262-stock-photo-modern-sleek-vibrant-red-wall.png"
+      alt="Logo Pomodoro"
+      class="brand-logo"
+    >
+    <h1>Pomodoro Matías Henquín</h1>
+  </div>
+    <div id="syncStatus" class="sync-status cache" role="status">
+      <span class="status-orb"></span>
+      <span id="syncStatusText">Trabajando con cache</span>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <aside class="panel form-panel">
+      <div class="panel-heading">
+        <p class="eyebrow">Nuevo registro</p>
+        <h2 id="formTitle">Sesion de enfoque</h2>
+      </div>
+
+      <form id="studyForm">
+        <input type="hidden" id="idEstudio">
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required>
+        </div>
+        <div class="form-group">
+          <label for="materia">Materia</label>
+          <input type="text" id="materia" list="materiasList" placeholder="Ej: Calculo 1" autocomplete="off" required>
+          <datalist id="materiasList"></datalist>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" id="cantidad" min="1" step="1" value="1" required>
+          </div>
+          <div class="form-group">
+            <label for="tiempo">Tiempo</label>
+            <input type="number" id="tiempo" min="1" step="1" value="25" required>
+          </div>
+        </div>
+        <p class="total-preview"><span>Total previsto</span><strong id="totalPreview">25 min</strong></p>
+        <div class="button-row">
+          <button type="submit" id="saveButton">Guardar</button>
+          <button type="button" id="newButton" class="secondary">Nuevo</button>
+        </div>
+      </form>
+
+    </aside>
+
+    <section class="content">
+      <section class="summary">
+        <div>
+          <h2>Materias estudiadas</h2>
+        </div>
+        <p id="recordCount" class="record-count">0 registros</p>
+      </section>
+
+      <div id="flashcards" class="flashcard-grid"></div>
+
+      <section class="panel history-panel">
+        <div class="panel-heading history-heading">
+          <div>
+            <h2>Historial registrado</h2>
+          </div>
+          <button type="button" id="retryButton" class="small secondary">Reintentar sync</button>
+        </div>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Materia</th>
+                <th>Cant.</th>
+                <th>Tiempo</th>
+                <th>Total</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <p id="emptyState" class="empty-state">Todavia no hay sesiones registradas.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
